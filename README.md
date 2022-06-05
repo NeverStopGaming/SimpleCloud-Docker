@@ -5,7 +5,7 @@ kann sein das es nicht mehr funktioniert xD
 
 ### run
 
-1. run `apt install docker.io docker-compose git`
+1. run `apt install docker.io docker-compose git curl`
 
 2. run `mkdir /home/simplecloud` to create the folder
 
