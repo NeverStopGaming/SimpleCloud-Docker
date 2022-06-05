@@ -9,7 +9,7 @@ kann sein das es nicht mehr funktioniert xD
 
 2. run `mkdir /home/simplecloud` to create the folder
 
-3. Download **[SimpleCloud](https://github.com/theSimpleCloud/SimpleCloud/releases/download/v2.3.0/SimpleCloud-v2.3.0.zip)** in the /home/simplecloud directory
+3. Download **[SimpleCloud](https://github.com/theSimpleCloud/SimpleCloud/releases/latest)** in the /home/simplecloud directory
 
 4. run the normal installation with `./start.sh`
 
