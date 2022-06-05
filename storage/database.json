@@ -1,0 +1,9 @@
+{
+  "host": "10.22.0.3",
+  "port": 27017,
+  "databaseName": "simplecloud",
+  "userName": "simplecloud",
+  "password": "simplecloud",
+  "collectionPrefix": "cloud_",
+  "databaseType": "MONGODB"
+}
