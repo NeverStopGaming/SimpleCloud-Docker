@@ -1,0 +1,6 @@
+FROM openjdk:17.0.2-oracle
+USER root
+RUN mkdir -p /home/simplecloud
+WORKDIR /home/simplecloud
+
+CMD ["java", "-XX:+UseG1GC", "-XX:MaxGCPauseMillis=50", "-XX:CompileThreshold=100", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCompressedOops", "-Dfile.encoding=UTF-8", "-Xmx1024M", "-Xms256m", "-jar", "runner.jar", "--start-application=MANAGER"]

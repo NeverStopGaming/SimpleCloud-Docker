@@ -1,0 +1,68 @@
+# _   _                                ____    _                      ____                       _
+#| \ | |   ___  __   __   ___   _ __  / ___|  | |_    ___    _ __    / ___|   __ _   _ __ ___   (_)  _ __     __ _
+#|  \| |  / _ \ \ \ / /  / _ \ | '__| \___ \  | __|  / _ \  | '_ \  | |  _   / _` | | '_ ` _ \  | | | '_ \   / _` |
+#| |\  | |  __/  \ V /  |  __/ | |     ___) | | |_  | (_) | | |_) | | |_| | | (_| | | | | | | | | | | | | | | (_| |
+#|_| \_|  \___|   \_/    \___| |_|    |____/   \__|  \___/  | .__/   \____|  \__,_| |_| |_| |_| |_| |_| |_|  \__, |
+#                                                           |_|                                              |___/
+#
+# Docker Compose File | NeverStopGaming.net | All rights reserved
+
+version: '3.1'
+
+
+# Set Networks -> Used for Static Ip Address for Minecraft Server
+networks:
+  cloudnetwork:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.22.0.0/16
+
+services:
+
+  # Mongo Container
+  mongo:
+    networks:
+      cloudnetwork:
+        ipv4_address: 10.22.0.3
+    image: mongo:4.0.3
+    container_name: MongoDB
+    restart: always
+    volumes:
+      - /home/simplecloud/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - /etc/mongod.conf:/data/configdb/mongod.conf
+      - /var/lib/mongod/:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+      - MONGO_MAJOR=5.0
+      - GOSU_VERSION=1.12
+      - AUTH=yes
+      - JSYAML_VERSION=3.13.1
+      - MONGO_PACKAGE=mongodb-org
+      - MONGO_VERSION=5.0.1
+      - MONGO_REPO=repo.mongodb.org
+    command: mongod --auth
+
+    # SimpleCloud Container
+  simplecloud:
+    networks:
+      cloudnetwork:
+        ipv4_address: 10.22.0.2
+    restart: always
+    container_name: SimpleCloud
+    stdin_open: true
+    tty: true
+    user: root
+    volumes:
+    - /home/simplecloud/:/home/simplecloud/
+    build:
+      context: .
+      dockerfile: /home/simplecloud/SimpleCloud_Dockerfile
+    ports:
+      - 25565:25565
+      - 8585:8585
+      - 1630:1630
+      - 1631:1631
+    depends_on:
+      - mongo
