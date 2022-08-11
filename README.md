@@ -17,6 +17,6 @@ kann sein das es nicht mehr funktioniert xD
 
 6. run `cd /home/ && git clone https://github.com/NeverStopGaming/SimpleCloud-Docker`
 
-7. then you need to change the im in the `launcher.json` and in `storage/wrappers/InternalWrapper.json` to `10.22.0.3`
+7. then you need to change the ip in the `launcher.json` and in `storage/wrappers/InternalWrapper.json` to `10.22.0.3`
 
 8. run `docker-compose up -d` in /home/simplecloud
