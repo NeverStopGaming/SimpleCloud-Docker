@@ -11,7 +11,7 @@ RUN wget -O simplecloud.zip https://github.com/theSimpleCloud/SimpleCloud/releas
 
 FROM amazoncorretto:17
 
-COPY --from=downloader /home/simplecloud /home/simplecloud
+COPY --from=downloader /home/SimpleCloud-Docker /home/SimpleCloud-Docker
 
 WORKDIR /home/SimpleCloud-Docker
 
