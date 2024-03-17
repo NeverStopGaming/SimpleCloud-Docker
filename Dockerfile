@@ -17,4 +17,7 @@ WORKDIR /home/simplecloud
 
 VOLUME /home/simplecloud
 
+EXPOSE 25565
+EXPOSE 8585
+
 CMD ["java", "-XX:+UseG1GC", "-XX:MaxGCPauseMillis=50", "-XX:CompileThreshold=100", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCompressedOops", "-Dfile.encoding=UTF-8", "-Xmx1024M", "-Xms256m", "-jar", "runner.jar", "--start-application=MANAGER"]
