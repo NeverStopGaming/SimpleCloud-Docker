@@ -5,9 +5,7 @@ RUN apt-get update && apt-get install -y wget unzip
 ENV CONTAINER_NAME SimpleCloud
 WORKDIR /app
 
-RUN mkdir /app \
-    && cd /app \
-    && wget -O simplecloud.zip https://github.com/theSimpleCloud/SimpleCloud/releases/download/v2.7.1/SimpleCloud-v2.7.1.zip \
+RUN wget -O simplecloud.zip https://github.com/theSimpleCloud/SimpleCloud/releases/download/v2.7.1/SimpleCloud-v2.7.1.zip \
     && unzip simplecloud.zip \
     && rm simplecloud.zip
 
