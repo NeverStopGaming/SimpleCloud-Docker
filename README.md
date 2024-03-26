@@ -1,9 +1,17 @@
 # SimpleCloud-Docker
 
-### run
+not working att the moment
+
+### Installation
 
 ```bash
-cd /home && git clone https://github.com/Panda260/SimpleCloud-Docker && cd SimpleCloud-Docker && docker build -t simplecloud . && docker run --name SimpleCloud -i -t simplecloud
+cd /home && git clone https://github.com/Panda260/SimpleCloud-Docker && cd SimpleCloud-Docker && docker build -t simplecloud .
+```
+
+### Usage
+
+```bash
+docker run --name SimpleCloud -i -t -v /home/simplecloud-Docker:/app simplecloud
 ```
 
 credit to [Lisaa](https://github.com/ImLisaa)
