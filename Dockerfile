@@ -15,7 +15,7 @@ COPY --from=downloader /home/SimpleCloud-Docker /home/SimpleCloud-Docker
 
 WORKDIR /home/SimpleCloud-Docker
 
-VOLUME /home/SimpleCloud-Docker
+VOLUME /home/SimpleCloud-Docker:/home/SimpleCloud-Docker
 
 EXPOSE 25565
 EXPOSE 8585
