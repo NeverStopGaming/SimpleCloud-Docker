@@ -3,7 +3,7 @@ FROM debian:buster-slim AS downloader
 RUN apt-get update && apt-get install -y wget unzip
 
 ENV CONTAINER_NAME SimpleCloud
-WORKDIR /home/SimpleCloud-Docker
+WORKDIR /app
 
 RUN wget -O simplecloud.zip https://github.com/theSimpleCloud/SimpleCloud/releases/download/v2.7.1/SimpleCloud-v2.7.1.zip \
     && unzip simplecloud.zip \
@@ -11,13 +11,11 @@ RUN wget -O simplecloud.zip https://github.com/theSimpleCloud/SimpleCloud/releas
 
 FROM amazoncorretto:17
 
-COPY --from=downloader /home/SimpleCloud-Docker /home/SimpleCloud-Docker
+COPY --from=downloader /app ./
 
-WORKDIR /home/SimpleCloud-Docker
+WORKDIR /app
 
-VOLUME /home/SimpleCloud-Docker:/home/SimpleCloud-Docker
+CMD ["java", "-XX:+UseG1GC", "-XX:MaxGCPauseMillis=50", "-XX:CompileThreshold=100", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCompressedOops", "-Dfile.encoding=UTF-8", "-Xmx1024M", "-Xms256m", "-jar", "runner.jar", "--start-application=MANAGER"]
 
 EXPOSE 25565
 EXPOSE 8585
-
-CMD ["java", "-XX:+UseG1GC", "-XX:MaxGCPauseMillis=50", "-XX:CompileThreshold=100", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCompressedOops", "-Dfile.encoding=UTF-8", "-Xmx1024M", "-Xms256m", "-jar", "runner.jar", "--start-application=MANAGER"]
