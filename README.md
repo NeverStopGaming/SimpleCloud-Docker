@@ -11,7 +11,7 @@ cd /home && git clone https://github.com/Panda260/SimpleCloud-Docker && cd Simpl
 ### Usage
 
 ```bash
-docker run --name SimpleCloud -i -t -v /home/simplecloud-Docker:/app simplecloud
+docker run --name SimpleCloud -i -t -v /home/SimpleCloud-Docker:/app simplecloud
 ```
 
 credit to [Lisaa](https://github.com/ImLisaa)
