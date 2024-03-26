@@ -11,10 +11,6 @@ RUN wget -O simplecloud.zip https://github.com/theSimpleCloud/SimpleCloud/releas
 
 FROM amazoncorretto:17
 
-COPY --from=downloader /app ./
-
-WORKDIR /app
-
 CMD ["java", "-XX:+UseG1GC", "-XX:MaxGCPauseMillis=50", "-XX:CompileThreshold=100", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCompressedOops", "-Dfile.encoding=UTF-8", "-Xmx1024M", "-Xms256m", "-jar", "runner.jar", "--start-application=MANAGER"]
 
 EXPOSE 25565
