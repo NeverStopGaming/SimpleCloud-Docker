@@ -1,6 +1,6 @@
 # SimpleCloud-Docker
 
-not working att the moment
+not working at the moment
 
 ### Installation
 
